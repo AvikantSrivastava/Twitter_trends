@@ -12,14 +12,14 @@ source KEY_SETUP
 
 ## Development Phase
 ### Phase 1 (Backend Development)
-- [ ] Twitter Fetcher 
-- [ ] Trend Analysis module
+- [X] Twitter Fetcher 
+- [X] Trend Analysis module
 - [ ] FaunaDB Client 
 - [ ] CRON automation
 
 
 ### Phase 2 (Client Side development)
-- [ ] Telegram Bot
+- [X] Telegram Bot
 - [ ] Web application Dashboard
 - [ ] API Endpoint (RESTful based on Flask / FastAPI) 
 - [ ] Mobile APP Client 
