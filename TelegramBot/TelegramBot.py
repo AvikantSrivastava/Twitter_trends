@@ -9,13 +9,17 @@ class TelegramBot():
         self.URL = f'https://api.telegram.org/bot{self.Token}/'
 
     def send(self, ChatIDs, Message):
-
+        # Dictionary to store responses with ChatID as keys.
         responses = {}
 
+        # Sending messages Iteratively.
         for ChatID in ChatIDs:
-            Response_URL = self.URL + f'sendMessage?chat_id={ChatID}&parse_mode=Markdown&text={Message}'
-            print(Response_URL)
-            responses[ChatID] = requests.get(Response_URL)
+            Response_URL = self.URL + 'sendMessage'
+            post_data = {"chat_id": ChatID, "text": Message}
+            response = requests.post(Response_URL, data=post_data)
+            responses[ChatID] = response
+        
+        # Returning HTTP Response code.
         return responses
 
     def get_ChatID(self):
