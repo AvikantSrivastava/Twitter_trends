@@ -3,17 +3,10 @@ import os
 import json
 import sys
 #import geocoder
+sys.path.append("..")
 from tweepy.auth import OAuthHandler
 import twitter
-import credentials
-
-auth_params = {
-    'app_key': credentials.API_KEY,
-    'app_secret': credentials.API_SECRET_KEY,
-    'oauth_token': credentials.ACCESS_TOKEN,
-    'oauth_token_secret': credentials.ACCESS_TOKEN_SECRET
-}
-
+import credentials, settings
 
 auth = tweepy.OAuthHandler(credentials.API_KEY, credentials.API_SECRET_KEY)
 auth.set_access_token(credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
