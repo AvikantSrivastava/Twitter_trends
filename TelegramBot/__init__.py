@@ -1,1 +1,1 @@
-import TelegramBot
+import TelegramBot.TelegramBot as TelegramBot
