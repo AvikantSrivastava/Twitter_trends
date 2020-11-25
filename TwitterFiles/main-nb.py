@@ -1,5 +1,3 @@
-import credentials
-import settings
 import re
 import tweepy
 import mysql.connector
@@ -7,6 +5,9 @@ import pandas as pd
 import string
 from textblob import TextBlob
 from nltk.corpus import stopwords
+import sys
+sys.path.append("..")
+import credentials, settings
 import nltk
 nltk.download('stopwords')
 stopwords = stopwords.words('english')
