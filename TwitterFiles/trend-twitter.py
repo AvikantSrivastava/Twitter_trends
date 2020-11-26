@@ -6,6 +6,7 @@ sys.path.append("..")
 from tweepy.auth import OAuthHandler
 import twitter
 import credentials, settings
+from trendtwitterV2 import getTrends
 
 auth = tweepy.OAuthHandler(credentials.API_KEY, credentials.API_SECRET_KEY)
 auth.set_access_token(credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
@@ -31,5 +32,8 @@ for value in world_trends:
 trends_trunc_india = [x[1:] if x.startswith('#') else x for x in trendlist_india]
 trends_trunc_world = [x[1:] if x.startswith('#') else x for x in trendlist_world]
 
-print(trends_trunc_india)
-print(trends_trunc_world)
+#print(trends_trunc_india)
+#print(trends_trunc_world)
+trands = getTrends()
+print(trands.getTrends_India())
+print(trands.getTrends_World())
