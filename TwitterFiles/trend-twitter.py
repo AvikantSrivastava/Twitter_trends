@@ -2,7 +2,6 @@ import tweepy
 import os
 import json
 import sys
-#import geocoder
 sys.path.append("..")
 from tweepy.auth import OAuthHandler
 import twitter
@@ -18,10 +17,19 @@ india_woe_id = 23424848
 world_trends = api.trends_place(id=world_woe_id)
 india_trends = api.trends_place(id=india_woe_id)
 
-trends = []
+trendlist_india = []
+trendlist_world = []
 
 for value in india_trends:
     for trend in value['trends']:
-        trends.append(trend['name'])
-    #    print(trend['name'])
-print(trends)
+        trendlist_india.append(trend['name'])
+
+for value in world_trends:
+    for trend in value['trends']:
+        trendlist_world.append(trend['name'])
+
+trends_trunc_india = [x[1:] if x.startswith('#') else x for x in trendlist_india]
+trends_trunc_world = [x[1:] if x.startswith('#') else x for x in trendlist_world]
+
+print(trends_trunc_india)
+print(trends_trunc_world)
