@@ -5,9 +5,6 @@ async function GetAPI(url) {
   var data = await response.json();
   console.log(data);
 
-  if (response) {
-    document.getElementById('loading').style.display = 'none';
-  }
   show(data);
 }
 
@@ -22,16 +19,17 @@ function show(data) {
   <th>Negative</th> 
   </tr>
   `;
-
+  var count = 1;
   for (let trend of data.top_trends) {
     tab += `<tr>
+    <td>${count++}</td>
     <td>${trend.name}</td>
     <td>${trend.positive}</td>
     <td>${trend.negative}</td>
     </tr>`;
   }
 
-  document.getElementById("TrendsTable")
+  document.getElementById("TrendsTable").innerHTML = tab;
 
 
 }
