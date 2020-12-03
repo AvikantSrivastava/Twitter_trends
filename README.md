@@ -20,12 +20,15 @@ source KEY_SETUP
 
 ### Phase 2 (Client Side development)
 - [X] Telegram Bot
-- [ ] Web application Dashboard
-- [ ] API Endpoint (RESTful based on Flask / FastAPI) 
+- [x] Web application Dashboard
+- - https://avikantsrivastava.github.io/Twitter_trends-1/index.html
+- [x] API Endpoint (RESTful based on Flask / FastAPI) 
+- - https://twitter-trends-daily.herokuapp.com/
 - [ ] Mobile APP Client 
   
 ### Phase 3 (Deployment)
 - [ ] Dockerization 
-- [ ] Deployment on cloud services
+- [x] Deployment on cloud services
+- - https://twitter-trends-daily.herokuapp.com/
   
 
