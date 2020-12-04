@@ -1,9 +1,7 @@
 import datetime
-import json
+from Database.Database import database
 from TwitterFiles.TrendTwitter import TrendTwitter
 from TwitterFiles.SentimentalAnalysis import SentimentEngine
-
-import pprint
 
 main_locations = ['india', 'world']
 
@@ -18,30 +16,25 @@ all_locations = ['world',
                  ]
 
 
-trending = {}
+TrendData = {}
+TrendDB_name = 'TrendDB'
+TrendDB = database(TrendDB_name)
+
 
 for location in all_locations:
     obj = TrendTwitter(location)
-    trending[location] = obj.getTrends()
+    TrendData[location] = obj.getTrends()
 
-#print(json.dumps(trending, indent=4))
-trendingMain = {}
+TrendDB.dump(TrendData)
+print(TrendData)
 
-for location in main_locations:
-    obj = TrendTwitter(location)
-    trendingMain[location] = obj.getTrends()
 
-print(trendingMain)
 
-senti = {}
-#
+
+# SentimentDB = {}
+
 # for location in main_locations:
-#   senti[location] = SentimentEngine()
-#
-# Location_Trends = {}
-# for location in main_locations:
-#     print(f'Trends for {location} are')
-#     Location_Trends[location] = TrendTwitter(location)
-#     for num, trend in enumerate(Location_Trends[location].getTrends()):
-#         print(f'{num + 1} : {trend}')
-#     print("________")
+#     obj = TrendTwitter(location)
+#     SentimentDB[location] = obj.getTrends()
+
+# print(SentimentDB)
