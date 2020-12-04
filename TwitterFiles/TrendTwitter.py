@@ -45,7 +45,8 @@ class TrendTwitter():
 
 if __name__ == '__main__':
 # mainly for testing
-    locationlist = ['world',
+    main_locations = ['india', 'world']
+    all_locations = ['world',
                     'india',
                     'newyork',
                     'toronto',
@@ -55,12 +56,10 @@ if __name__ == '__main__':
                     'paris',
                     ]
 
-    obj_list = {}
-
-    # getting objects/ printing objects
-    for location in locationlist:
+    Location_Trends = {}
+    for location in main_locations:
         print(f'Trends for {location} are')
-        obj_list[location] = TrendTwitter(location)
-        for num, trend in enumerate(obj_list[location].getTrends()):
+        Location_Trends[location] = TrendTwitter(location)
+        for num, trend in enumerate(Location_Trends[location].getTrends()):
             print(f'{num + 1} : {trend}')
         print("________")
