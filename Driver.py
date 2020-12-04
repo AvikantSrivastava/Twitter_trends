@@ -3,7 +3,6 @@ import json
 from TwitterFiles.TrendTwitter import TrendTwitter
 from TwitterFiles.SentimentalAnalysis import SentimentEngine
 
-import pprint
 
 main_locations = ['india', 'world']
 
@@ -19,30 +18,34 @@ all_locations = ['world',
 
 
 
-trending = {}
+TrendData = {}
+TrendDB_name = 'TrendDB'
+TrendDB = database(TrendDB_name)
 
 for location in all_locations:
     obj = TrendTwitter(location)
-    trending[location] = obj.getTrends()
+    TrendData[location] = obj.getTrends()
 
-#print(json.dumps(trending, indent=4))
-trendingMain = {}
+TrendDB.dump(TrendData)
+
+SentimentData = {}
+SentimentDB_name = 'SentimentDB'
+SentimentDB = database(SentimentDB_name)
 
 for location in main_locations:
     obj = TrendTwitter(location)
-    trendingMain[location] = obj.getTrends()
+    Trends = obj.getTrends()
+    SentimentData[location] = []
 
-print(trendingMain)
+    for num,Trendname in enumerate(Trends):
+        Trend = SentimentEngine(Trendname)
+        TrendScore = {}
+        postive, negative = Trend.getScores()
+        TrendScore['name'] = Trendname
+        TrendScore['rank'] = num + 1
+        TrendScore['positive'] = postive
+        TrendScore['negative'] = negative
 
-senti = {}
-#
-#for location in main_locations:
- #   senti[location] = SentimentEngine()
-#
-    # Location_Trends = {}
-    # for location in main_locations:
-    #     print(f'Trends for {location} are')
-    #     Location_Trends[location] = TrendTwitter(location)
-    #     for num, trend in enumerate(Location_Trends[location].getTrends()):
-    #         print(f'{num + 1} : {trend}')
-    #     print("________")
+        SentimentData[location].append(TrendScore)
+    
+SentimentDB.dump(SentimentData)
