@@ -35,9 +35,12 @@ class SentimentEngine():
                 self.positive+=1
             elif analysis.sentiment.polarity <= -0.2:
                 self.negative +=1
-
-        self.PositiveScore = round(self.positive / (self.positive + self.negative),2)
-        self.NegativeScore = round(self.negative / (self.positive + self.negative),2)
+        if self.positive == 0 and self.negative == 0:
+            self.PositiveScore = 0.50
+            self.NegativeScore = 0.50     
+        else:
+            self.PositiveScore = round(self.positive / (self.positive + self.negative),2)
+            self.NegativeScore = round(self.negative / (self.positive + self.negative),2)
 
     def getScores(self):
         return self.PositiveScore, self.NegativeScore
