@@ -1,3 +1,6 @@
 Flask
 gunicorn
 flask_cors
+tweepy
+deta
+textblob
