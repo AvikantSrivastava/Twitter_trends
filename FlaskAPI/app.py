@@ -1,6 +1,5 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from TwitterFiles.TrendTwitter import TrendTwitter
 import datetime
 from Database.Database import database
 app = Flask(__name__)
@@ -15,6 +14,16 @@ SentimentDB = database(SentimentDB_name)
 
 @app.route('/')
 def api():
+    SentimentData = SentimentDB.fetch()
+    Data = {
+        'date': datetime.datetime.now(),
+        'trends': SentimentData
+    }
+
+    return jsonify(Data)
+
+@app.route('/alltrends')
+def alltrends():
     TrendData = TrendDB.fetch()
     Data = {
         'date': datetime.datetime.now(),
@@ -24,7 +33,7 @@ def api():
     return jsonify(Data)
 
 
-@app.route('/<location>', methods=['GET'])
+@app.route('/alltrends/<location>', methods=['GET'])
 def locationTrend(location):
     TrendData = TrendDB.fetch()
     Data = {
