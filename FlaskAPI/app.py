@@ -1,34 +1,38 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
+from TwitterFiles.TrendTwitter import TrendTwitter
 import datetime
+from Database.Database import database
 app = Flask(__name__)
 CORS(app)
+
+TrendDB_name = 'TrendDB'
+TrendDB = database(TrendDB_name)
+
+SentimentDB_name = 'SentimentDB'
+SentimentDB = database(SentimentDB_name)
 
 
 @app.route('/')
 def api():
-  # dummy data, will fetch this data from a database.
-    data = {
+    TrendData = TrendDB.fetch()
+    Data = {
         'date': datetime.datetime.now(),
-        'top_trends': [
-            {'name': 'Trend Name 1',
-             'positive': 56,
-             'negative': 12,
-             },
-
-             {'name': 'Trend Name 2',
-             'positive': 56,
-             'negative': 12,
-             },
-
-             {'name': 'Trend Name 3',
-             'positive': 23,
-             'negative': 54,
-             },
-        ]
+        'trends': TrendData
     }
 
-    return jsonify(data)
+    return jsonify(Data)
+
+
+@app.route('/<location>', methods=['GET'])
+def locationTrend(location):
+    TrendData = TrendDB.fetch()
+    Data = {
+        'date': datetime.datetime.now(),
+        'trends': TrendData[location]
+    }
+
+    return jsonify(Data)
 
 
 if __name__ == '__main__':
