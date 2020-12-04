@@ -1,79 +1,49 @@
-from tweepy.streaming import StreamListener
-from tweepy import OAuthHandler
-from tweepy import Stream
+import os
 from textblob import TextBlob
 import tweepy
-import sys
-sys.path.append("..")
-import credentials
-from TwitterFiles.trendtwitterV2 import getTrends
 
 
-authorizer = OAuthHandler(credentials.API_KEY, credentials.API_SECRET_KEY)
-authorizer.set_access_token(credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
 
-api = tweepy.API(authorizer ,timeout=15)
-all_tweets = []
-trend_wise = getTrends()
+class SentimentEngine():
+    def __init__(self, TrendName):
+        
+        # Authentication
+        auth = tweepy.OAuthHandler(
+            os.environ['API_KEY'],
+            os.environ['API_SECRET_KEY'])
 
-
-# top_1 = trend_wise.getTrends_India()
-# top_1 =top_1[0]
-#
-# search_query = top_1
-#
-# for tweet_object in tweepy.Cursor(api.search,q=search_query+" -filter:retweets",lang='en',result_type='recent').items(200):
-#     all_tweets.append(tweet_object.text)
-#
-# positive = negative = 0
-# for tweet in all_tweets:
-#
-#     analysis = TextBlob(tweet)
-#     if analysis.sentiment.polarity >= 0:
-#         positive+=1
-#     else:
-#         negative +=1
-# print("Positive tweets percent ", positive / len(all_tweets))
-# print("Negative tweets percent ", negative / len(all_tweets))
+        auth.set_access_token(
+            os.environ['ACCESS_TOKEN'],
+            os.environ['ACCESS_TOKEN_SECRET'])
+        
+        self.api = tweepy.API(auth ,timeout=15)
 
 
-top_10_india = trend_wise.getTrends_India()
-top_10_india =top_10_india[:10]
+        self.Trend = TrendName
+        self.Tweets = []
 
-for num, sentiment in enumerate(top_10_india):
-    search_query = sentiment
+        search_query = self.Trend
 
-    for tweet_object in tweepy.Cursor(api.search,q=search_query+" -filter:retweets",lang='en',result_type='recent').items(100):
-        all_tweets.append(tweet_object.text)
+        for tweet_object in tweepy.Cursor(self.api.search,q=search_query+" -filter:retweets",lang='en',result_type='recent').items(100):
+            self.Tweets.append(tweet_object.text)
 
-    positive = negative = 0
-    for tweet in all_tweets:
+        self.positive = self.negative = 0
 
-        analysis = TextBlob(tweet)
-        if analysis.sentiment.polarity >= 0.2:
-            positive+=1
-        elif analysis.sentiment.polarity <= -0.2:
-            negative +=1
-    print(f"Positive tweets percent for trend {num + 1} - {sentiment} ", round(positive / (positive + negative),2))
-    print(f"Negative tweets percent for trend {num + 1} - {sentiment} ", round(negative / (positive + negative),2))
+        for tweet in self.Tweets:
+            analysis = TextBlob(tweet)
+            if analysis.sentiment.polarity >= 0.2:
+                self.positive+=1
+            elif analysis.sentiment.polarity <= -0.2:
+                self.negative +=1
 
+        self.PositiveScore = round(self.positive / (self.positive + self.negative),2)
+        self.NegativeScore = round(self.negative / (self.positive + self.negative),2)
 
-top_10_world = trend_wise.getTrends_World()
-top_10_world =top_10_world[:10]
+    def getScores(self):
+        return self.PositiveScore, self.NegativeScore
+        
 
-for num, sentiment in enumerate(top_10_world):
-    search_query = sentiment
+    
 
-    for tweet_object in tweepy.Cursor(api.search,q=search_query+" -filter:retweets",lang='en',result_type='recent').items(100):
-        all_tweets.append(tweet_object.text)
+    
 
-    positive = negative = 0
-    for tweet in all_tweets:
-
-        analysis = TextBlob(tweet)
-        if analysis.sentiment.polarity >= 0.2:
-            positive+=1
-        elif analysis.sentiment.polarity <= -0.2:
-            negative +=1
-    print(f"Positive tweets percent for trend {num + 1} - {sentiment} ", round(positive / (positive + negative),2))
-    print(f"Negative tweets percent for trend {num + 1} - {sentiment} ", round(negative / (positive + negative),2))
