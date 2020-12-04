@@ -43,7 +43,11 @@ class SentimentEngine():
         return self.PositiveScore, self.NegativeScore
         
 
-    
+if __name__ == '__main__':
+# mainly for testing
 
-    
+    eminem = SentimentEngine('eminem')
+    print(f'Score for Eminem Good {eminem.getScores()[0]} Bad {eminem.getScores()[1]}')
 
+    rcb = SentimentEngine('rcb')
+    print(f'Score for RCB Good {mkbhd.getScores()[0]} Bad {mkbhd.getScores()[1]}')
