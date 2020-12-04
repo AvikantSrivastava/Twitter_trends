@@ -6,7 +6,7 @@ import tweepy
 
 class SentimentEngine():
     def __init__(self, TrendName):
-        
+
         # Authentication
         auth = tweepy.OAuthHandler(
             os.environ['API_KEY'],
@@ -15,7 +15,7 @@ class SentimentEngine():
         auth.set_access_token(
             os.environ['ACCESS_TOKEN'],
             os.environ['ACCESS_TOKEN_SECRET'])
-        
+
         self.api = tweepy.API(auth ,timeout=15)
 
 
@@ -41,7 +41,7 @@ class SentimentEngine():
 
     def getScores(self):
         return self.PositiveScore, self.NegativeScore
-        
+
 
 if __name__ == '__main__':
 # mainly for testing
@@ -49,5 +49,5 @@ if __name__ == '__main__':
     eminem = SentimentEngine('eminem')
     print(f'Score for Eminem Good {eminem.getScores()[0]} Bad {eminem.getScores()[1]}')
 
-    rcb = SentimentEngine('rcb')
+    mkbhd = SentimentEngine('mkbhd')
     print(f'Score for RCB Good {mkbhd.getScores()[0]} Bad {mkbhd.getScores()[1]}')
