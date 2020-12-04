@@ -1,7 +1,5 @@
 import os
 import tweepy
-import sys
-sys.path.append("..")
 
 
 class TrendTwitter():
