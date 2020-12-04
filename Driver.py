@@ -8,15 +8,14 @@ import pprint
 main_locations = ['india', 'world']
 
 all_locations = ['world',
-                    'india',
-                    'newyork',
-                    'toronto',
-                    'sydney',
-                    'london',
-                    'madrid',
-                    'paris',
-                    ]
-
+                 'india',
+                 'newyork',
+                 'toronto',
+                 'sydney',
+                 'london',
+                 'madrid',
+                 'paris',
+                 ]
 
 
 trending = {}
@@ -36,13 +35,13 @@ print(trendingMain)
 
 senti = {}
 #
-#for location in main_locations:
- #   senti[location] = SentimentEngine()
+# for location in main_locations:
+#   senti[location] = SentimentEngine()
 #
-    # Location_Trends = {}
-    # for location in main_locations:
-    #     print(f'Trends for {location} are')
-    #     Location_Trends[location] = TrendTwitter(location)
-    #     for num, trend in enumerate(Location_Trends[location].getTrends()):
-    #         print(f'{num + 1} : {trend}')
-    #     print("________")
+# Location_Trends = {}
+# for location in main_locations:
+#     print(f'Trends for {location} are')
+#     Location_Trends[location] = TrendTwitter(location)
+#     for num, trend in enumerate(Location_Trends[location].getTrends()):
+#         print(f'{num + 1} : {trend}')
+#     print("________")
