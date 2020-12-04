@@ -16,10 +16,8 @@ locationlist = ['world',
                 'india',
                 'newyork',
                 'toronto',
-                # 'delhi',
                 'sydney',
                 'london',
-              #  'berlin',
                 'madrid',
                 'paris',
                 ]
@@ -34,19 +32,6 @@ woe_id = {
     'madrid' : 766273,
     'paris' :615702 ,
 }
-
-
-# world_woe_id = 1
-# india_woe_id = 23424848
-# newyork_woe_id = 2459115
-# toronto_woe_id = 4118
-# delhi_woe_id = 2295019
-# sydney_woe_id = 1105779
-# london_woe_id = 44418
-# berlin_woe_id = 638243
-# madrid_woe_id = 766273
-# paris_woe_id = 615702
-
 
 trends = {}
 for location in locationlist:
