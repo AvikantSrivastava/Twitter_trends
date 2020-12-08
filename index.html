@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- <script src="script.js"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+  <title>What's Trending</title>
+</head>
+
+<body>
+
+  <nav class="border fixed split-nav">
+    <div class="nav-brand">
+      <h3>What's Trending</h3>
+    </div>
+    <div class="collapsible">
+      <input id="collapsible1" type="checkbox" name="collapsible1">
+      <label for="collapsible1">
+        Menu
+      </label>
+      <div class="collapsible-body">
+        <ul class="inline">
+          <li><a href="https://twitter-trends-daily.herokuapp.com/">Checkout our free API</a></li>
+          <li><a href="http://t.me/Twitter_smart_trends_bot">Telegram ChatBot</a></li>
+          <li><a href="https://github.com/AvikantSrivastava/Twitter_trends-1/">Follow on Github</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="sm-12 md-8 col">
+      <div class="paper container container-lg margin-bottom-large" style="min-height:man-content">
+        <h3>Want to know what is trending around you?</h3>
+        <p>
+          <img src="https://cdn.onlinewebfonts.com/svg/img_21099.png" alt="" class="float-left no-border" width="100" >
+          We tell you the latest trends in realtime.
+        </p>
+        <p>
+          Our Algorithm looks for people's reaction on Twitter on different trends, based on <b>Machine Learning</b> it
+          tells you how Positive or Negative the trend is.
+        </p>
+        <!-- <p>Using Machine</p> -->
+      </div>
+    <div class="paper container container-lg margin-bottom-large">
+        <div class="row flex-spaces tabs">
+
+          <input id="tab1" type="radio" name="tabs" checked>
+          <label for="tab1">
+            <h3>India</h3>
+          </label>
+
+          <input id="tab2" type="radio" name="tabs">
+          <label for="tab2">
+            <h3>World</h3>
+          </label>
+
+          <div class="content" id="content1">
+            <table id="contentIndia" style="text-align:center">
+            </table>
+          </div>
+
+          <div class="content" id="content2">
+            <table id="contentWorld" style="text-align:center">
+            </table>
+          </div>
+
+        </div>
+    </div>
+      
+
+    </div>
+
+    <div class="col-sm-12 col-md-4 col">
+      <div class="paper">
+        <h3>
+          <center>Other locations</center>
+        </h3>
+        <div>
+          <table id="TrendsTable">
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="card-footer">Footer</div> -->
+<div class="card-footer">
+  <div class="paper">
+    <div class="card-body">
+      <center>
+      <h4 class="card-title">Made with <span style="color: #e25555;">&#9829;</span> by Avikant Srivastava </h4>
+      <h5 class="card-subtitle"><a href="https://www.linkedin.com/in/avikantsrivastava/" ><i class="fa fa-linkedin-square fa-6"></i>   Avikant Srivastava</a></h5>
+      <h5 class="card-subtitle"><a href="https://github.com/avikantsrivastava" ><i class="fa fa-github-square fa-6"></i>   @AvikantSrivastava</a></h5>
+      <h5 class="card-subtitle"><a href="https://twitter.com/aestheticell" ><i class="fa fa-twitter-square fa-6"></i>   @Aestheticell</a></h5>
+      <h5 class="card-subtitle"><a href="https://www.instagram.com/aesthetixell/" ><i class="fa fa-instagram fa-5"></i>   @Aesthetixell</a></h5>
+
+    </center>
+    </div>
+  </div>
+</div>
+  <!-- <div class="card-footer" style="width: 20rem;">
+    <div class="card-body">
+      <h4 class="card-title">My awesome Paper card!</h4>
+      <h5 class="card-subtitle">Nice looking subtitle.</h5>
+      <p class="card-text">This is another example of a card without image. Cards are also meant to be used without images, but with text/links/buttons.</p>
+      <a class="card-link" href="#">First link</a>
+      <a class="card-link" href="#">Second link</a>
+    </div>
+  </div> -->
+
+</body>
+<script src="script.js"></script>
+
+</html>

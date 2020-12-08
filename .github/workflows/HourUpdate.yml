@@ -1,9 +1,16 @@
 name: Hourly update to Database
 
 on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Why are you running it?'     
+        required: true
+        default: 'Just to test the database.'
+       
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '* 1 * * *'
+    - cron:  '0,30 * * * *'
 
 jobs:
   build:
