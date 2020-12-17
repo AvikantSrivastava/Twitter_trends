@@ -3,22 +3,17 @@ from Database.Database import database
 from TwitterFiles.TrendTwitter import TrendTwitter
 from TwitterFiles.SentimentalAnalysis import SentimentEngine
 
-main_locations = ['india', 'world']
+main_locations = ['India', 'World']
 
-all_locations = ['world',
-                 'india',
-                 'newyork',
-                 'toronto',
-                 'sydney',
-                 'london',
-                 'madrid',
-                 'paris',
+all_locations = ['World',
+                 'India',
+                 'Newyork',
+                 'Toronto',
+                 'Sydney',
+                 'London',
+                 'Madrid',
+                 'Paris',
                  ]
-
-
-TrendData = {}
-TrendDB_name = 'TrendDB'
-TrendDB = database(TrendDB_name)
 
 
 TrendData = {}
@@ -28,7 +23,13 @@ TrendDB = database(TrendDB_name)
 
 for location in all_locations:
     obj = TrendTwitter(location)
-    TrendData[location] = obj.getTrends()
+    TrendData[location] = []
+    TrendValues = {}
+    TrendValues['trends'] =  obj.getTrends()
+    TrendValues['volume'] = obj.getVolume()
+    TrendValues['url'] = obj.getUrl()
+
+    TrendData[location].append(TrendValues)
 
 TrendDB.dump(TrendData)
 
@@ -49,7 +50,9 @@ for location in main_locations:
         TrendScore['rank'] = num + 1
         TrendScore['positive'] = postive
         TrendScore['negative'] = negative
+        TrendScore['volume'] = obj.getVolume()
+        TrendScore['url'] = obj.getUrl()
 
         SentimentData[location].append(TrendScore)
-    
+
 SentimentDB.dump(SentimentData)
