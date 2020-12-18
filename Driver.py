@@ -3,17 +3,22 @@ from Database.Database import database
 from TwitterFiles.TrendTwitter import TrendTwitter
 from TwitterFiles.SentimentalAnalysis import SentimentEngine
 
-main_locations = ['India', 'World']
+main_locations = ['india', 'world']
 
-all_locations = ['World',
-                 'India',
-                 'Newyork',
-                 'Toronto',
-                 'Sydney',
-                 'London',
-                 'Madrid',
-                 'Paris',
+all_locations = ['world',
+                 'india',
+                 'newyork',
+                 'toronto',
+                 'sydney',
+                 'london',
+                 'madrid',
+                 'paris',
                  ]
+
+
+TrendData = {}
+TrendDB_name = 'TrendDB'
+TrendDB = database(TrendDB_name)
 
 
 TrendData = {}
@@ -23,13 +28,7 @@ TrendDB = database(TrendDB_name)
 
 for location in all_locations:
     obj = TrendTwitter(location)
-    TrendData[location] = []
-    TrendValues = {}
-    TrendValues['trends'] =  obj.getTrends()
-    TrendValues['volume'] = obj.getVolume()
-    TrendValues['url'] = obj.getUrl()
-
-    TrendData[location].append(TrendValues)
+    TrendData[location] = obj.getTrends()
 
 TrendDB.dump(TrendData)
 
@@ -41,8 +40,6 @@ for location in main_locations:
     obj = TrendTwitter(location)
     Trends = obj.getTrends()
     SentimentData[location] = []
-    Urls = obj.getUrl()
-    Vols = obj.getVolume()
 
     for num,Trendname in enumerate(Trends):
         Trend = SentimentEngine(Trendname)
@@ -52,9 +49,7 @@ for location in main_locations:
         TrendScore['rank'] = num + 1
         TrendScore['positive'] = postive
         TrendScore['negative'] = negative
-        TrendScore['volume'] = Urls[num]
-        TrendScore['url'] = Vols[num]
 
         SentimentData[location].append(TrendScore)
-
+    
 SentimentDB.dump(SentimentData)

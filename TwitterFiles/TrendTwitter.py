@@ -19,20 +19,18 @@ class TrendTwitter():
 
         self.cityname = cityname
         self.woe_id = {
-            'World': 1,
-            'India': 23424848,
-            'Newyork': 2459115,
-            'Toronto': 4118,
-            'Sydney': 1105779,
-            'London': 44418,
-            'Madrid': 766273,
-            'Paris': 615702,
+            'world': 1,
+            'india': 23424848,
+            'newyork': 2459115,
+            'toronto': 4118,
+            'sydney': 1105779,
+            'london': 44418,
+            'madrid': 766273,
+            'paris': 615702,
         }
 
         self.cityTrends = self.api.trends_place(self.woe_id[self.cityname])
         self.trendlist = []
-        self.volume = []
-        self.url = []
 
     def getTrends(self):
         for value in self.cityTrends:
@@ -42,29 +40,18 @@ class TrendTwitter():
             '#') else x for x in self.trendlist]
         return trends_trunc[:10]
 
-    def getVolume(self):
-        for value in self.cityTrends:
-            for trend in value['trends']:
-                self.volume.append(trend['tweet_volume'])
-        return self.volume[:10]
-
-    def getUrl(self):
-        for value in self.cityTrends:
-            for trend in value['trends']:
-                self.url.append(trend['url'])
-        return self.url[:10]
 
 if __name__ == '__main__':
 # mainly for testing
-    main_locations = ['India', 'World']
-    all_locations = ['World',
-                    'India',
-                    'Newyork',
-                    'Toronto',
-                    'Sydney',
-                    'London',
-                    'Madrid',
-                    'Paris',
+    main_locations = ['india', 'world']
+    all_locations = ['world',
+                    'india',
+                    'newyork',
+                    'toronto',
+                    'sydney',
+                    'london',
+                    'madrid',
+                    'paris',
                     ]
 
     Location_Trends = {}
