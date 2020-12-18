@@ -1,6 +1,6 @@
 {
-  "name": "What' Trending",
-  "short_name": "What' Trending",
+  "name": "What's Trending",
+  "short_name": "What's Trending",
   "icons": [
     {
       "src": "icons/manifest-icon-192.png",
