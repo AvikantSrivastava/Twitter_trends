@@ -41,6 +41,8 @@ for location in main_locations:
     obj = TrendTwitter(location)
     Trends = obj.getTrends()
     SentimentData[location] = []
+    Urls = obj.getUrl()
+    Vols = obj.getVolume()
 
     for num,Trendname in enumerate(Trends):
         Trend = SentimentEngine(Trendname)
@@ -50,8 +52,8 @@ for location in main_locations:
         TrendScore['rank'] = num + 1
         TrendScore['positive'] = postive
         TrendScore['negative'] = negative
-        TrendScore['volume'] = obj.getVolume()
-        TrendScore['url'] = obj.getUrl()
+        TrendScore['volume'] = Urls[num]
+        TrendScore['url'] = Vols[num]
 
         SentimentData[location].append(TrendScore)
 
