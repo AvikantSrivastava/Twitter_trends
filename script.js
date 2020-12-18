@@ -62,7 +62,7 @@ fetch(SentimentUrl).then(function (response) {
   for (trend of SentimentData.trends.world) {
     SentimentHTMLWorld += `<tr>
       <td>${trend.rank}</td>
-      <td>${trend.name}</td>
+      <td><a href="https://twitter.com/search?q=${trend.name}">${trend.name}</a></td>
       <td>${trend.positive}</td>
       <td>${trend.negative}</td>
       </tr>`;
