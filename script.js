@@ -24,7 +24,7 @@ fetch(TrendUrl).then(function (response) {
       for (var item in list) {
         TrendHTML +=
           `
-          <li>${list[item]}</li>
+          <li><a href="https://twitter.com/search?q=${list[item]}">${list[item]}</a></li>
           `;
       }
 
