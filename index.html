@@ -49,7 +49,9 @@
   <div class="row">
     <div class="sm-12 md-8 col">
       <div class="paper container-lg margin-bottom-large">
-        <h3>Want to know what is trending around you? <button id="install_button" class="float-right">Install APP</button>
+        <h3>Want to know what is trending around you?
+          <button id="install_button" class="float-right" style='visibility: hidden;'>Install
+              APP</button>
         </h3>
         <p>
           <img src="robo.png" alt="" class="float-left no-border" width="100">
@@ -149,10 +151,20 @@
   </div>
 
 </body>
+
+<!-- to disable button when the app is installed -->
 <script>
-  // Check that service workers are supported
+  var node;
+  console.log(!window.matchMedia('(display-mode: standalone)').matches);
+  if (!window.matchMedia('(display-mode: standalone)').matches) {
+    node = document.getElementById('install_button');
+    node.style.visibility = 'visible';
+  }  
+
+</script>
+
+<script>
   if ('serviceWorker' in navigator) {
-    // Use the window load event to keep the page load performant
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('service-worker.js');
     });
