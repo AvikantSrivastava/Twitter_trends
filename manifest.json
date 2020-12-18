@@ -1,6 +1,6 @@
 {
-  "name": "My First Progressive Web app",
-  "short_name": "First PWA",
+  "name": "What' Trending",
+  "short_name": "What' Trending",
   "icons": [
     {
       "src": "icons/manifest-icon-192.png",
