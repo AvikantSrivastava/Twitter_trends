@@ -18,7 +18,7 @@ fetch(TrendUrl).then(function (response) {
     <input id="collapsible${location}" type="checkbox" name="collapsible">
     <label for="collapsible${location}">${location}</label>
     <div class="collapsible-body">
-    <ul>
+    <ol style="display: inline-block text-align:left; list-style-position: inside;">
     `;
 
       for (var item in list) {
