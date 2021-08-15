@@ -2,10 +2,8 @@ import os
 from textblob import TextBlob
 import tweepy
 
-
-
-class SentimentEngine():
-    def __init__(self, TrendName):
+class Engine():
+    def __init__(self):
 
         # Authentication
         auth = tweepy.OAuthHandler(
@@ -18,6 +16,9 @@ class SentimentEngine():
 
         self.api = tweepy.API(auth ,timeout=15)
 
+class SentimentEngine(Engine):
+    def __init__(self, TrendName):
+        Engine.__init__(self)
 
         self.Trend = TrendName
         self.Tweets = []
