@@ -4,3 +4,4 @@ flask_cors
 tweepy
 deta
 textblob
+yake==0.4.8
