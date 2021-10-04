@@ -11,6 +11,9 @@ TrendDB = database(TrendDB_name)
 SentimentDB_name = 'SentimentDB'
 SentimentDB = database(SentimentDB_name)
 
+KeywordDB_name = 'KeywordDB'
+KeywordDB = database(KeywordDB_name)
+
 
 @app.route('/')
 def api():
@@ -42,6 +45,12 @@ def locationTrend(location):
     }
 
     return jsonify(Data)
+
+@app.route('/keywords')
+def keywords():
+    keyword_data = KeywordDB.fetch()
+    return jsonify(keyword_data)
+    
 
 
 if __name__ == '__main__':
