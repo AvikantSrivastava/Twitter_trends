@@ -1,7 +1,8 @@
-Flask
-gunicorn
-flask_cors
-tweepy
-deta
-textblob
+requests==2.22.0
+tweepy==3.10.0
+deta==1.0.0
 yake==0.4.8
+textblob==0.15.3
+Flask_Cors==3.0.10
+Flask==2.0.1
+gunicorn
