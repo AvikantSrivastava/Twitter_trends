@@ -1,4 +1,4 @@
-requests==2.22.0
+requests==2.31.0
 tweepy==3.10.0
 deta==1.0.0
 yake==0.4.8
